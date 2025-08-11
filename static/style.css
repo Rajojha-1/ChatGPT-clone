@@ -448,8 +448,8 @@ background-color: rgba(80, 79, 79,.3);
 .ask_anything {
     position: absolute;
     left: 50%;
-    bottom: 18px; /* dock at bottom once chatting */
-    transform: translateX(-50%);
+    top: 46%; /* initially centered */
+    transform: translate(-50%, -50%);
     width: 100%;
     /* height: 60px; */
     background-color: #323232;
@@ -458,6 +458,12 @@ background-color: rgba(80, 79, 79,.3);
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 1px 0.2px rgba(255,255,255,0.5);
+}
+/* docked position after chat starts */
+.ask_anything.docked{
+  top: auto;
+  bottom: 18px;
+  transform: translateX(-50%);
 }
 .ask_anything_input{
   height: 56px;
@@ -478,6 +484,23 @@ background-color: rgba(80, 79, 79,.3);
   border: none;
   border-color: none;
 
+}
+/* disclaimer beneath input when docked */
+.disclaimer{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -26px; /* below the input pill */
+  color: #ffffff;
+  font-size: 12px;
+  text-align: center;
+  white-space: normal;
+  max-width: 90%;
+  opacity: 0.9;
+}
+.disclaimer .cookie_prefs{
+  text-decoration: underline;
+  cursor: pointer;
 }
 .ask_anything_input:focus {
     outline: none;

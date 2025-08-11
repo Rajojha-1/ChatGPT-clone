@@ -25,12 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementsByClassName('ask_anything_input')[0];
   const chatArea = document.getElementById('chat_area');
   const about = document.getElementsByClassName('aboutchat')[0];
+  const askAnything = document.getElementsByClassName('ask_anything')[0];
+  const disclaimer = document.getElementById('disclaimer');
   let started = false;
 
   function ensureStarted() {
     if (!started) {
       document.body.classList.remove('landing_active');
       about && (about.style.display = 'none');
+      // move input to bottom and show disclaimer
+      askAnything.classList.add('docked');
+      disclaimer && disclaimer.classList.remove('hidden');
       started = true;
     }
   }
