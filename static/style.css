@@ -404,11 +404,52 @@ background-color: rgba(80, 79, 79,.3);
     height: 100vh;
     box-sizing: border-box;
 }
+/* chat area for messages */
+.chat_area{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding: 10px 0 90px 0; /* bottom padding so input doesn’t overlap */
+}
+.message_row{
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
+.message_user, .message_bot{
+  max-width: 75%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: white;
+  font-size: 16px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+.message_user{
+  margin-left: auto;
+  background-color: #3a3a3a;
+}
+.message_bot{
+  margin-right: auto;
+  background-color: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.message_avatar{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0169CC;
+  flex: 0 0 28px;
+}
 .ask_anything {
     position: absolute;
     left: 50%;
-    top: 46%; /* center in main_chat */
-    transform: translate(-50%, -50%);
+    bottom: 18px; /* dock at bottom once chatting */
+    transform: translateX(-50%);
     width: 100%;
     /* height: 60px; */
     background-color: #323232;
