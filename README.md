@@ -2,16 +2,14 @@
 
 Quickstart
 
-1. Create and activate a virtual environment (optional):
-   python3 -m venv .venv && source .venv/bin/activate
-
-2. Install dependencies:
-   pip install -U flask openai
-
-3. Set your OpenAI API key:
+1. Set your OpenAI API key:
    export OPENAI_API_KEY=sk-...
 
-4. Run the app:
+2. Run the app (no extra installs needed):
    python chatbot.py
 
-The app will be available at http://127.0.0.1:5000/
+3. Open in your browser:
+   http://127.0.0.1:5000/
+
+Notes
+- The server is a zero-dependency stdlib HTTP server that serves `templates/` and `static/`, and handles POST `/chat` by calling OpenAI. Ensure your network can reach `https://api.openai.com/`.
