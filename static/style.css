@@ -1,0 +1,553 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #212121;
+  /* background-image: url('/assets/chatgptbackground'); */
+  transition: background 0.5s ease;
+  position: relative; /* Needed for pseudo-element positioning */
+  overflow-x: hidden; /* avoid horizontal scroll if blur causes overflow */
+}
+.leftbar {
+  height: 100vh;
+  width: 56px;
+  box-shadow: 0.5px 0 0 0 rgba(255, 255, 255, 0.1);
+  /* position: absolute;  */
+  top: 0;
+  left: 0;
+}
+.chatgpt_logo {
+  color: #fff;
+  font-size: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /* position: absolute; */
+  top: 5px; /* align top */
+  left: 68px; /* exactly at right of leftbar */
+  padding: 0px;
+  background-color: transparent;
+}
+.header {
+  display: flex;
+  gap: 2px;
+}
+.arrow{
+    fill: #9b9999;
+    width: 18px;
+    background: transparent;
+    padding: 4px;
+}
+.logo_tog{
+    display: flex;           /* logo + arrow on same row */
+  align-items: center;     /* arrow vertically centered to text */
+  margin-top: 0;
+  gap: -1px;
+  position: absolute;
+    top: 5px;
+    left: 68px;
+    padding: 10px;
+}
+.navbar{
+    display: flex;
+    align-items: flex-start;
+    left: 68px;
+}
+.logo_tog:hover{
+    cursor: pointer;
+    padding: 10px;
+    background-color: #525252;
+    border-radius: 10px;
+}
+.something
+{
+    height: 120px;
+    width: 345px;
+    padding: 6px;
+    background-color: #343434;
+    position: absolute;
+    top: 52px;
+    left: 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+.hidden {
+  display: none;
+}
+.upgrade{
+  /* padding: 20px; */
+  margin: 0px;
+  color: #fff;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.plus{
+  padding: 8px;
+  /* border: 6px solid #343434; */
+  border-radius: 15px;
+
+}
+.smartest{
+  color: rgb(151, 151, 151)
+}
+.plus:hover{
+  background-color: #b6b6b62b;
+  /* border: 6px solid #343434; */
+  border-radius: 15px;
+}
+.pluss{
+  padding: 8px;
+  /* border: 6px solid #343434; */
+  border-radius: 15px;
+}
+  .pluss:hover{
+  background-color: #b6b6b62b;
+  /* border: 6px solid #343434; */
+  border-radius: 15px;
+}
+.chatgpt_norm{
+  color: #fff;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.everyday{
+   color: rgb(151, 151, 151)
+}
+.chatlogo {
+  fill: white;
+  width: 26px;   /* change size of icon */
+  height: 26px;
+  padding: 15px;
+  display: block; /* avoid inline baseline spacing */
+}
+.image{
+  position: relative;
+}
+.svgs {
+  display: inline-block; /* keeps container where it is */
+  text-align: center;
+  margin: 0 10px;
+  margin-top: 8px;
+}
+
+.svgs svg {
+  display: block;
+  margin-bottom: 2px;   /* gap between icons */
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  fill: white;
+}
+.write{
+  padding: 8px;
+}
+.write:hover{
+  background-color: rgba(104, 104, 104, 0.359);
+ border-radius: 10px;
+}
+.search{
+  padding: 8px;
+}
+.search:hover{
+  background-color: rgba(104, 104, 104, 0.359);
+  border-radius: 10px;
+
+
+}
+.image{
+  padding: 8px;
+}
+.image:hover{
+  background-color: rgba(104, 104, 104, 0.359);
+    border-radius: 10px;
+}
+.leftbar:hover{
+  cursor:e-resize;
+}
+.chatlogo2 {
+  position: absolute;
+  fill: white;
+  width: 24px;   /* change size of icon */
+  height: 24px;
+  padding: 16px;
+  top: 0px;
+  display: block; /* avoid inline baseline spacing */
+}
+.chatlogo2{
+  opacity: 0;;
+}
+.leftbar:hover .chatlogo2 {
+  opacity: 1;
+}
+.leftbar:hover .chatlogo {
+  opacity: 0;
+}
+.temporary {
+  position: absolute;
+  top: 1%;
+  right: 0.5%;
+}
+
+.tempor {
+  width: 25px;    /* icon size */
+  height: 25px;
+  padding: 7px;   /* creates hover area */
+  fill: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box; /* ensures padding doesn't shrink the icon */
+}
+
+.tempor:hover {
+  background-color: rgb(80, 79, 79);
+  border-radius: 50%;
+}
+.account{
+  background-color:#0169CC ;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  align-items: center;
+  padding: 1px;;
+  font-size: small;
+  border-radius: 100%;
+  height:24px;
+  width: 24px;
+  justify-content: center;
+  display: flex;
+
+}
+
+.accounthold{
+    left: 5px;
+  position: absolute;
+  display: flex;
+  bottom: 8px;
+  padding: 10px;
+  border-radius: 30%;
+
+
+
+}
+.accounthold:hover{
+background-color: #0169CC;
+cursor: pointer;
+background-color: rgba(80, 79, 79,.3);
+}
+.accountopen{
+  width: 285px;
+  height: 265px;
+  background-color: #353535;
+  position: absolute;
+  bottom: 60px;
+  left: 8px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.gmail_svg{
+  fill: #AFAFAF;
+  width: 22px;
+  height: 22px;
+}
+.gmail_write{
+  color: #AFAFAF;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.gmail{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+  cursor: pointer;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+
+}
+.plan_write{
+    color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.plan_svg{
+  fill: #ffffff;
+  width: 22px;
+  height: 22px;
+}
+.plan{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+    cursor: pointer;
+  border-radius: 10px;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+}
+.customize_svg {
+  fill: #ffffff;
+  width: 22px;
+  height: 22px;
+}
+.customize_write {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.customize{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+}
+.settings
+{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+}
+.settings_svg {
+  fill: #ffffff;
+  width: 22px;
+  height: 22px;
+}
+.settings_write {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.line {
+  width: 90%;
+  height: 1px;
+  background-color: #5f5f5f;
+  margin: 4px 14px; /* Adjust spacing as needed */
+}
+.logout{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+}
+.logout_svg{
+    fill: #ffffff;
+  width: 22px;
+  height: 22px;
+}
+.logout_write{
+    color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.help{
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+  /* padding: 15px; */
+  margin: 0 10px 0 10px;
+}
+.help_svg{
+  fill: #ffffff;
+  width: 22px;
+  height: 22px;
+}
+.help_write{
+      color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15.7px;
+}
+.plan:hover{
+  background-color: rgb(80, 79, 79);
+}
+.customize:hover{
+  background-color: rgb(80, 79, 79);
+}
+.settings:hover{
+  background-color: rgb(80, 79, 79);
+}
+.help:hover{
+  background-color: rgb(80, 79, 79);
+}
+.logout:hover{
+  background-color: rgb(80, 79, 79);
+}
+.accountopen_things{
+  margin: 10px 0 10px 0;
+  display: grid;
+  gap: 2px;
+
+}
+.help_arrow{
+    fill: #ffffff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  align-items: right;
+  justify-content: right;
+  display: flex;
+  left: 250px;
+  top: 190px;
+
+}
+.main_chat {
+    position: absolute;
+    left: 55vh;
+    width: 850px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.ask_anything {
+    position: absolute;
+    left: 50%;
+    top: 46%; /* center in main_chat */
+    transform: translate(-50%, -50%);
+    width: 100%;
+    /* height: 60px; */
+    background-color: #323232;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1px 0.2px rgba(255,255,255,0.5);
+}
+.ask_anything_input{
+  height: 56px;
+  background-color: transparent;
+  border: none;
+  border-color: none;
+  width: 730px;
+  padding: 0;
+  caret-color: white; /* change the cursor line color */
+  /* caret-color: transparent; */
+  caret-shape:bar;
+}
+.ask_anything_input::placeholder{
+  color: #a4a4a4;
+  font-size: large;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* padding-left: 10px ; */
+  border: none;
+  border-color: none;
+
+}
+.ask_anything_input:focus {
+    outline: none;
+}
+
+.add{
+  fill: white;
+  width: 24px;
+  height: 24px;
+  padding: 17px;
+}
+.mic{
+  height: 24px;
+  border-radius: 10px;
+  width: 24px;
+  padding: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mic_svg{
+  fill: white;
+  width: 24px;
+  height: 24px;
+  z-index: 100;
+}
+.introduce{
+  color:white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+}
+.aboutgpt5{
+  color: #AFAFAF;
+  font-size: 17px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  flex-wrap: wrap;
+}
+.aboutchat {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(55% + 60px); /* 80px above ask_anything center */
+    width: 480px;
+    gap: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body.landing_active {
+background-image: url('{{ url_for("static", filename="assets/chatgptbackground") }}');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #212121;
+
+  /* filter: blur(4px); */
+}
+body.landing_active::before {
+  content: "";
+  position: fixed;  /* fixed covers viewport */
+  inset: 0;         /* top:0; left:0; bottom:0; right:0; */
+  backdrop-filter: blur(60px);
+  background-color:  rgba(24, 24, 24, 0.734);
+  z-index: -1;       /* behind page content */
+  pointer-events: none; /* clicks pass through */
+}
+body.landing_active > * {
+  position: relative;
+  z-index: 1;
+  filter: none; /* prevent blur on content inside body */
+}
+
+
+/* NEW: bottom vignette overlay */
+body.landing_active .bottom_vignette {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 650px;  /* height of vignette effect */
+  pointer-events: none; /* clicks pass through */
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0), /* darker at bottom */
+    transparent           /* fade to transparent at top */
+  );
+  z-index: 0; /* below content but above background blur */
+}
+.send_btn{
+  all:unset;
+  display: flex;
+  justify-content: center;
+    border-radius: 100px;
+    padding: 9px;
+}
+.send_btn_svg{
+  fill: white;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  border-radius: 100px;
+
+}
+.send_btn_svg:hover{
+  background-color: white;
+  fill: black;
+}
+input[type="text"] {
+  color: white; /* Changes typed text color */
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
