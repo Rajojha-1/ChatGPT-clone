@@ -21,13 +21,61 @@ document.addEventListener('click', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementsByClassName('send_btn')[0];
-  let clickedOnce = false;
+  const sendButton = document.getElementsByClassName('send_btn')[0];
+  const input = document.getElementsByClassName('ask_anything_input')[0];
+  const chatArea = document.getElementById('chat_area');
+  const about = document.getElementsByClassName('aboutchat')[0];
+  let started = false;
 
-  btn.addEventListener('click', () => {
-    if (!clickedOnce) {
-      document.body.classList.add('landing_active'); // only add, no toggle
-      clickedOnce = true; // mark it as done
+  function ensureStarted() {
+    if (!started) {
+      document.body.classList.remove('landing_active');
+      about && (about.style.display = 'none');
+      started = true;
+    }
+  }
+
+  function appendMessage(text, who) {
+    const row = document.createElement('div');
+    row.className = 'message_row';
+    const bubble = document.createElement('div');
+    bubble.className = who === 'user' ? 'message_user' : 'message_bot';
+    bubble.textContent = text;
+    row.appendChild(bubble);
+    chatArea.appendChild(row);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const message = input.value.trim();
+    if (!message) return;
+    ensureStarted();
+    appendMessage(message, 'user');
+    input.value = '';
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), 60000);
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+        signal: controller.signal,
+      });
+      clearTimeout(id);
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
+      appendMessage(data.reply || 'No response', 'bot');
+    } catch (err) {
+      appendMessage('Error: unable to reach chatbot. Please try again.', 'bot');
+      console.error(err);
+    }
+  }
+
+  sendButton.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   });
 });
