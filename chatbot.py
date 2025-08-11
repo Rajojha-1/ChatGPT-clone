@@ -106,7 +106,7 @@ class ChatHandler(BaseHTTPRequestHandler):
         return
 
 
-def run(host: str = '0.0.0.0', port: int = 5000) -> None:
+def run(host: str = '127.0.0.1', port: int = 5000) -> None:
     server = ThreadingHTTPServer((host, port), ChatHandler)
     print(f'Server running at http://{host}:{port}')
     try:
