@@ -43,11 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Configure Markdown renderer if available
-  if (window.marked) {
-    try {
-      window.marked.setOptions({ gfm: true, breaks: true });
-    } catch (_) {}
-  }
+if (window.marked) {
+  try {
+    window.marked.setOptions({
+      gfm: true,
+      breaks: true,
+      highlight: function(code, lang) {
+        if (window.hljs && lang && window.hljs.getLanguage(lang)) {
+          return window.hljs.highlight(code, { language: lang }).value;
+        }
+        return window.hljs ? window.hljs.highlightAuto(code).value : code;
+      }
+    });
+  } catch (_) {}
+}
+
 
   // Sync right-edge proxy scrollbar with chat area
   function updateProxyHeight() {
