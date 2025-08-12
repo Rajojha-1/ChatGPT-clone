@@ -639,3 +639,24 @@ input[type="text"] {
   scrollbar-width: thin;              /* "auto" or "thin" */
   scrollbar-color: #2e2e2e #1e1e1e;   /* thumb color, track color */
 }
+
+/* Markdown rendering tweaks for bot messages */
+.message_bot pre {
+  background-color: #1e1e1e;
+  padding: 12px;
+  border-radius: 10px;
+  overflow: auto;
+  white-space: pre;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.message_bot code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+}
+.message_bot ul,
+.message_bot ol {
+  margin: 0.5em 0 0.5em 1.25em;
+}
+.message_bot p {
+  margin: 0.4em 0;
+}
