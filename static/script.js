@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const needsScroll = total > viewport;
     scrollProxy.style.display = needsScroll ? 'block' : 'none';
     // Set spacer height so the proxy has a matching scroll range
-    scrollProxySpacer.style.height = Math.max(0, total - 1) + 'px';
+scrollProxySpacer.style.height = Math.max(0, total - 6) + 'px';
   }
 
   let syncing = false;

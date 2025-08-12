@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   background-color: #212121;
   /* background-image: url('/assets/chatgptbackground'); */
   transition: background 0.5s ease;
@@ -221,7 +222,7 @@ body {
     left: 5px;
   position: absolute;
   display: flex;
-  bottom: 8px;
+  bottom: 12px;
   padding: 10px;
   border-radius: 30%;
 
@@ -642,7 +643,7 @@ input[type="text"] {
 
 /* Markdown rendering tweaks for bot messages */
 .message_bot pre {
-  background-color: #1e1e1e;
+  background-color: #1d1d1d;
   padding: 12px;
   border-radius: 10px;
   overflow: auto;
