@@ -660,3 +660,30 @@ input[type="text"] {
 .message_bot p {
   margin: 0.4em 0;
 }
+
+/* Hide native scrollbar for chat area while keeping scroll functionality */
+.chat_area {
+  scrollbar-width: none; /* Firefox */
+}
+.chat_area::-webkit-scrollbar {
+  width: 0; /* Safari and Chrome */
+  height: 0;
+}
+
+/* Fixed viewport-right scrollbar proxy */
+#scroll_proxy {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px; /* narrow, overlay only */
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  z-index: 9999; /* above content but below menus if needed */
+  pointer-events: auto;
+}
+#scroll_proxy .spacer {
+  width: 1px;
+  height: 0; /* will be set via JS */
+}

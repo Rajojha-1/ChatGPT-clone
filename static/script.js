@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const about = document.getElementsByClassName('aboutchat')[0];
   const askAnything = document.getElementsByClassName('ask_anything')[0];
   const disclaimer = document.getElementById('disclaimer');
+  const scrollProxy = document.getElementById('scroll_proxy');
+  const scrollProxySpacer = scrollProxy ? scrollProxy.querySelector('.spacer') : null;
   let started = false;
 
   function ensureStarted() {
@@ -47,6 +49,44 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (_) {}
   }
 
+  // Sync right-edge proxy scrollbar with chat area
+  function updateProxyHeight() {
+    if (!scrollProxySpacer) return;
+    const total = chatArea.scrollHeight;
+    const viewport = chatArea.clientHeight;
+    const needsScroll = total > viewport;
+    scrollProxy.style.display = needsScroll ? 'block' : 'none';
+    // Set spacer height so the proxy has a matching scroll range
+    scrollProxySpacer.style.height = Math.max(0, total - 1) + 'px';
+  }
+
+  let syncing = false;
+  function syncFromChat() {
+    if (syncing || !scrollProxy) return;
+    syncing = true;
+    const ratio = chatArea.scrollTop / (chatArea.scrollHeight - chatArea.clientHeight || 1);
+    const proxyMax = scrollProxy.scrollHeight - scrollProxy.clientHeight;
+    scrollProxy.scrollTop = ratio * proxyMax;
+    syncing = false;
+  }
+  function syncFromProxy() {
+    if (syncing || !scrollProxy) return;
+    syncing = true;
+    const ratio = scrollProxy.scrollTop / (scrollProxy.scrollHeight - scrollProxy.clientHeight || 1);
+    const chatMax = chatArea.scrollHeight - chatArea.clientHeight;
+    chatArea.scrollTop = ratio * chatMax;
+    syncing = false;
+  }
+
+  if (scrollProxy) {
+    scrollProxy.addEventListener('scroll', syncFromProxy, { passive: true });
+  }
+  chatArea.addEventListener('scroll', syncFromChat, { passive: true });
+  window.addEventListener('resize', () => {
+    updateProxyHeight();
+    syncFromChat();
+  });
+
   function appendMessage(text, who) {
     const row = document.createElement('div');
     row.className = 'message_row';
@@ -66,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     row.appendChild(bubble);
     chatArea.appendChild(row);
     chatArea.scrollTop = chatArea.scrollHeight;
+    updateProxyHeight();
+    syncFromChat();
   }
 
   async function sendMessage() {
@@ -100,4 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
       sendMessage();
     }
   });
+
+  // Initialize proxy based on initial layout
+  updateProxyHeight();
+  syncFromChat();
 });
