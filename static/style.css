@@ -435,6 +435,7 @@ background-color: rgba(80, 79, 79,.3);
   background-color: #2e2e2e;
 }
 .message_bot{
+    max-width: 99%;
   margin-right: auto;
   /* background-color: #2a2a2a;
   border: 1px solid rgba(255,255,255,0.06); */
@@ -625,16 +626,16 @@ input[type="text"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4cafef;      /* thumb (draggable part) color */
+  background: #333333;      /* thumb (draggable part) color */
   border-radius: 6px;       /* roundness */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2196f3;      /* thumb color on hover */
+  background: #323232;      /* thumb color on hover */
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;              /* "auto" or "thin" */
-  scrollbar-color: #4cafef #1e1e1e;   /* thumb color, track color */
+  scrollbar-color: #2e2e2e #1e1e1e;   /* thumb color, track color */
 }
