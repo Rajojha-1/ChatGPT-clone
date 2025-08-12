@@ -40,12 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Configure Markdown renderer if available
+  if (window.marked) {
+    try {
+      window.marked.setOptions({ gfm: true, breaks: true });
+    } catch (_) {}
+  }
+
   function appendMessage(text, who) {
     const row = document.createElement('div');
     row.className = 'message_row';
     const bubble = document.createElement('div');
     bubble.className = who === 'user' ? 'message_user' : 'message_bot';
-    bubble.textContent = text;
+
+    if (who === 'user') {
+      bubble.textContent = text;
+    } else {
+      if (window.DOMPurify && window.marked) {
+        bubble.innerHTML = DOMPurify.sanitize(marked.parse(text));
+      } else {
+        bubble.textContent = text;
+      }
+    }
+
     row.appendChild(bubble);
     chatArea.appendChild(row);
     chatArea.scrollTop = chatArea.scrollHeight;
